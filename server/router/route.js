@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const User = require("../model/dbcollection");
 // const auth = require("../middlewares/auth");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+router.use(cors());
 
 router.use(express.json());
 router.use(cookieParser());
