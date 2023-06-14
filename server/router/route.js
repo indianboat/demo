@@ -10,6 +10,11 @@ dotenv.config({ path: "./config.env" });
 router.use(express.json());
 router.use(cookieParser());
 
+router.get("/", async (req, res)=>{
+	res.statusCode(2000);
+	res.send("Hello Server");
+})
+
 router.post("/signup", async (req, res) => {
 	const { name, email,password } = req.body;
 
