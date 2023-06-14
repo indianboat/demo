@@ -23,8 +23,6 @@ export default function Signin() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    // const {name,email,password} = data;
-    //   console.log(data);
 
     try {
       const res = await fetch('/signin', {
@@ -32,10 +30,9 @@ export default function Signin() {
         headers: {
           "Content-Type": 'application/json',
         },
-        body: JSON.stringify({email:"govind@gmail.com", password:"123"})
+        body: JSON.stringify(data)
       })
       const result = await res.json();
-
       console.log(result);
 
     } catch (error) {
@@ -78,7 +75,7 @@ export default function Signin() {
 
   return (
     <div className="container w-25 mt-3">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form method="POST" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-floating mb-3">
           <input
             {...register("email")}
