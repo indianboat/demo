@@ -15,7 +15,7 @@ export default function Signup() {
     // const {name,email,password} = data;
     // console.log(name);
     try {
-      const res = await fetch('https://mydemy.onrender.com/signup', {
+      const res = await fetch('https://mydemy.onrender.com/signin', {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json',

@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
 router.post("/signin", async (req, res) => {
 
 	const { email, password } = req.body;
-	
+
 	console.log("hello req body", req.body);
 
 	if (!email || !password) {
@@ -53,7 +53,7 @@ router.post("/signin", async (req, res) => {
 	
 	else {
 		try {
-			const dbUser = await User.findOne({ email });
+			const dbUser = await User.findOne({ email: email });
 
 			if (!dbUser) {
 				res.status(422).json({message: "This email id is not exist. Please sign up first." });
@@ -61,8 +61,9 @@ router.post("/signin", async (req, res) => {
 			} 
 			else 
 			{
-
-				const isPassMatch = await bcrypt.compare(email, dbUser.password);
+				const dbPassword = dbUser.password;
+				const isPassMatch = await bcrypt.compare(req.body.password, dbPassword);
+				console.log(isPassMatch);
 
 				if (!isPassMatch) {
 					res.status(422).json({ message: "Invalid credentials !",authenticated:false });
@@ -71,7 +72,7 @@ router.post("/signin", async (req, res) => {
 				else 
 				{
 					token = await dbUser.createToken();
-					res.status(200).json({ message: "login success !",authenticated:true,token });
+					res.status(200).json({ message: "login success !", authenticated:true, token });
 				}
 			}
 		} catch (error) {
@@ -85,15 +86,15 @@ router.get("/", (req, res) => {
 });
 
 
-// router.get("/users", async (req, res) => {
-// 	try {
-//         const users = await User.find({});
-//         res.send(users);
+router.get("/users", async (req, res) => {
+	try {
+        const users = await User.find({});
+        res.send(users);
         
-//     } catch (error) {
-//         res.send('error');
-//     }
-// });
+    } catch (error) {
+        res.send('error');
+    }
+});
 
 // router.post("/contactform", async (req, res) => {
 // 	const { email, message } = req.body;

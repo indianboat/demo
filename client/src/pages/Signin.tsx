@@ -37,7 +37,6 @@ export default function Signin() {
 
         console.log(result);
 
-
         if (result.authenticated === false) {
           alert('invalid credentials!');
         }
@@ -49,7 +48,6 @@ export default function Signin() {
           console.log('after sign in  dispatch ', cookies && cookies.jwt_token && jwt(cookies.jwt_token) ? jwt(cookies.jwt_token) : 'not value till yet')
           navigate('/');
           window.location.reload();
-          // console.log('signin')
         }
 
       } catch (error) {
