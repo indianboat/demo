@@ -9,6 +9,10 @@ app.use(router);
 
 app.use((req, res, next) =>{
   res.header({"Access-Control-Allow-Origin": "*"});
+  res.header({"Access-Control-Allow-Origin": "https://mydemy.vercel.app"});
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
