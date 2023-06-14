@@ -90,7 +90,7 @@ export default function Signin() {
         {errors.password && <span>This field is required</span>}
 
         <div className="form-floating mt-5 mb-2 register-btn">
-          <button className="d-flex w-100 justify-content-center py-3" type="submit" value="Log in" />
+          <input className="d-flex w-100 justify-content-center py-3" type="submit" value="Log in" />
         </div>
         <div className="signup">
           Dont have an account?

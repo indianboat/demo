@@ -87,7 +87,7 @@ export default function Signup() {
         {errors.password && <span>This field is required</span>}
 
         <div className="form-floating mt-5 mb-2 register-btn">
-          <button className="d-flex w-100 justify-content-center py-3" type="submit" value="Sign up" />
+          <input className="d-flex w-100 justify-content-center py-3" type="submit" value="Sign up" />
           <div className="mt-2 h6">By signing up, you agree to our Terms of Use and Privacy Policy.</div>
 
         </div>
