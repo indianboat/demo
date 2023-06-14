@@ -6,7 +6,6 @@ const User = require("../model/dbcollection");
 // const auth = require("../middlewares/auth");
 const cookieParser = require("cookie-parser");
 
-dotenv.config({ path: "./config.env" });
 router.use(express.json());
 router.use(cookieParser());
 

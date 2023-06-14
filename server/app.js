@@ -7,8 +7,8 @@ const cors = require("cors");
 require('./db/db');
 app.use(router); 
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+app.use((req, res, next) =>{
+  res.header({"Access-Control-Allow-Origin": "*"});
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });

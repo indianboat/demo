@@ -28,7 +28,6 @@ export default function Signin() {
 
         const res = await fetch('https://mydemy.onrender.com/signin', {
           method: 'POST',
-          mode:"no-cors",
           headers: {
             "Content-Type": 'application/json',
           },
