@@ -44,35 +44,32 @@ router.post("/signup", async (req, res) => {
 router.post("/signin", async (req, res) => {
 
 	const { email, password } = req.body;
+	console.log("hello req body", req.body);
 
 	if (!email || !password) {
-		res.status(400).json({ message: "Required email and password." });
+		res.status(422).json({ message: "Required email and password." });
 	} 
 	
 	else {
 		try {
-			const dbUser = await User.findOne({ email: email });
+			const dbUser = await User.findOne({ email });
 
 			if (!dbUser) {
-				res
-					.status(409)
-					.json({
-						message: "This email id is not exist. Please sign up first.",
-					});
-			} else {
-				const dbPassword = dbUser.password;
+				res.status(422).json({message: "This email id is not exist. Please sign up first." });
 
-				const isPassMatch = await bcrypt.compare(req.body.password, dbPassword);
+			} 
+			else 
+			{
+
+				const isPassMatch = await bcrypt.compare(email, dbUser.password);
 
 				if (!isPassMatch) {
-					res.status(400).json({ message: "Invalid credentials !",authenticated:false });
-				} else {
+					res.status(422).json({ message: "Invalid credentials !",authenticated:false });
+				} 
+				
+				else 
+				{
 					token = await dbUser.createToken();
-					// res.cookie("jwt_token", token, {
-					// 	maxAge: 1800000,
-					// 	httpOnly: true,
-					// });
-
 					res.status(200).json({ message: "login success !",authenticated:true,token });
 				}
 			}

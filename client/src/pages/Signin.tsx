@@ -24,55 +24,55 @@ export default function Signin() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     // const {name,email,password} = data;
-  //   console.log(data);
+    //   console.log(data);
 
-  try {
-          const res = await fetch('/signin', {
+    try {
+      const res = await fetch('/signin', {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({email:"govind@gmail.com", password:"123"})
       })
       const result = await res.json();
 
       console.log(result);
-      
-  } catch (error) {
-    console.log('error,not fetched!', error);
-  }
 
-  //   try {
+    } catch (error) {
+      console.log('Error: ', error);
+    }
 
-  //     const res = await fetch('/signin', {
-  //       method: 'POST',
-  //       headers: {
-  //         "Content-Type": 'application/json',
-  //       },
-  //       body: JSON.stringify(data)
-  //     })
-  //     const result = await res.json();
+    //   try {
 
-  //     console.log(result);
+    //     const res = await fetch('/signin', {
+    //       method: 'POST',
+    //       headers: {
+    //         "Content-Type": 'application/json',
+    //       },
+    //       body: JSON.stringify(data)
+    //     })
+    //     const result = await res.json();
+
+    //     console.log(result);
 
 
-  //     if (result.authenticated === false) {
-  //       alert('invalid credentials!');
-  //     }
-  //     else if (result.authenticated === true) {
+    //     if (result.authenticated === false) {
+    //       alert('invalid credentials!');
+    //     }
+    //     else if (result.authenticated === true) {
 
-  //       setCookie("jwt_token", result.token);
-  //       alert('login success!');
-  //       dispatch(updateuser((cookies && cookies.jwt_token && jwt(cookies.jwt_token)) ? jwt(cookies.jwt_token) : ''))
-  //       console.log('after sign in  dispatch ', cookies && cookies.jwt_token && jwt(cookies.jwt_token) ? jwt(cookies.jwt_token) : 'not value till yet')
-  //       navigate('/');
-  //       window.location.reload();
-  //       // console.log('signin')
-  //     }
+    //       setCookie("jwt_token", result.token);
+    //       alert('login success!');
+    //       dispatch(updateuser((cookies && cookies.jwt_token && jwt(cookies.jwt_token)) ? jwt(cookies.jwt_token) : ''))
+    //       console.log('after sign in  dispatch ', cookies && cookies.jwt_token && jwt(cookies.jwt_token) ? jwt(cookies.jwt_token) : 'not value till yet')
+    //       navigate('/');
+    //       window.location.reload();
+    //       // console.log('signin')
+    //     }
 
-  //   } catch (error) {
-  //     console.log('error,not fetched!', error);
-  //   }
+    //   } catch (error) {
+    //     console.log('error,not fetched!', error);
+    //   }
 
   }
 
