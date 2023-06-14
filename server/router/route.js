@@ -10,11 +10,6 @@ dotenv.config({ path: "./config.env" });
 router.use(express.json());
 router.use(cookieParser());
 
-router.get("/", async (req, res)=>{
-	res.statusCode(2000);
-	res.send("Hello Server");
-})
-
 router.post("/signup", async (req, res) => {
 	const { name, email,password } = req.body;
 
@@ -87,44 +82,44 @@ router.post("/signin", async (req, res) => {
 	}
 });
 
-router.get("/check", (req, res) => {
+router.get("/", (req, res) => {
 	res.send('hello world');
 });
 
 
-router.get("/users", async (req, res) => {
-	try {
-        const users = await User.find({});
-        res.send(users);
+// router.get("/users", async (req, res) => {
+// 	try {
+//         const users = await User.find({});
+//         res.send(users);
         
-    } catch (error) {
-        res.send('error');
-    }
-});
+//     } catch (error) {
+//         res.send('error');
+//     }
+// });
 
-router.post("/contactform", async (req, res) => {
-	const { email, message } = req.body;
+// router.post("/contactform", async (req, res) => {
+// 	const { email, message } = req.body;
 
-	if (!email || !message) {
-		res.status(400).json({ msg: "Required (*) Mandatory fields" });
-	}
+// 	if (!email || !message) {
+// 		res.status(400).json({ msg: "Required (*) Mandatory fields" });
+// 	}
 
-  else{
-    try {
-      const user = await User.findOne({ email });
+//   else{
+//     try {
+//       const user = await User.findOne({ email });
   
-      if (!user) {
-        res.status(409).json({ msg: "user not exist" });
-      } else {
-        await user.addMsg(message);
-        await user.save();
-        res.status(201).json({ msg: "message send done" });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+//       if (!user) {
+//         res.status(409).json({ msg: "user not exist" });
+//       } else {
+//         await user.addMsg(message);
+//         await user.save();
+//         res.status(201).json({ msg: "message send done" });
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
 	
-});
+// });
 
 module.exports = router;
