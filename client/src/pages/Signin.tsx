@@ -49,6 +49,12 @@ export default function Signin() {
           navigate('/');
           window.location.reload();
         }
+        else if(result.message == "Required email and password."){
+          alert("Required email and password.")
+        }
+        else if(result.message == "This email id is not exist. Please sign up first."){
+          alert("This email id is not exist. Please sign up first.")
+        }
 
       } catch (error) {
         console.log('error,not fetched!', error);

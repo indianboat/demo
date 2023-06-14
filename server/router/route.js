@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const dotenv = require("dotenv");
 const User = require("../model/dbcollection");
 // const auth = require("../middlewares/auth");
 const cookieParser = require("cookie-parser");
@@ -21,7 +20,7 @@ router.post("/signup", async (req, res) => {
 			const userExist = await User.findOne({ email });
 
 			if (userExist) {
-				res.status(409).json({ message: "User Exist" });
+				res.status(409).json({ message: "User Exist Already" });
 			} else {
 				const newUser = new User({
 					name,

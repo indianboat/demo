@@ -7,8 +7,8 @@ require('./db/db');
 app.use(router); 
 
 app.use((req, res, next) =>{
-  res.setHeader({"Access-Control-Allow-Origin": "*"});
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
