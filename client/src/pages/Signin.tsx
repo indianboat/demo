@@ -25,7 +25,7 @@ export default function Signin() {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
 
     try {
-      const res = await fetch('/signin', {
+      const res = await fetch('https://mydemy.onrender.com/signin', {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json',
